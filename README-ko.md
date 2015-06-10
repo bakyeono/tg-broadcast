@@ -83,6 +83,7 @@ SQLite3을 설치합니다. (SQLite3 사용을 추천합니다. SQLite3을 사�
     -------------------------
     (admin only)
     broadcast   : Force broadcast now
+    notify      : Send a message to subscribers
     safequit    : Turn off robot
 
 `config.lua` 파일을 수정해서 방송할 내용을 수정하고 필요한 자동반응 명령을 추가하세요.

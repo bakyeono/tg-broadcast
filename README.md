@@ -82,6 +82,7 @@ When the script is running, send `help` message to yourself and you'll get this 
     -------------------------
     (admin only)
     broadcast   : Force broadcast now
+    notify      : Send a message to subscribers
     safequit    : Turn off robot
 
 Now edit `config.lua` to edit broadcast message and add your own commands to the robot.
