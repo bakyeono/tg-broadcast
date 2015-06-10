@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [[ -z $1 ]]; then
+  echo "pkill -15 -ef telegram-cli"
+  pkill -15 -ef telegram-cli
+else
+  echo "pkill -$1 -ef telegram-cli"
+  pkill -$1 -ef telegram-cli
+fi
+

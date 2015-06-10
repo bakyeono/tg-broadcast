@@ -1,0 +1,11 @@
+#!/bin/bash
+
+RUN_PATH=$HOME/tg-broadcast
+TELEGRAM_CLI_PATH=$HOME/telegram-cli
+TELEGRAM_CLI_BIN=$TELEGRAM_CLI_PATH/telegram-cli
+TELEGRAM_CLI_KEY=$TELEGRAM_CLI_PATH/tg-server.pub
+TELEGRAM_CLI_SCRIPT=$RUN_PATH/script/bot.lua
+
+cd $RUN_PATH
+nohup $TELEGRAM_CLI_BIN -W -k $TELEGRAM_CLI_KEY -s $TELEGRAM_CLI_SCRIPT >/dev/null 2>&1 &
+cd -

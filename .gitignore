@@ -1,0 +1,5 @@
+nohup.out
+key/
+*.record
+*.log
+*.db
