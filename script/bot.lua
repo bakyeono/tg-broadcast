@@ -74,6 +74,15 @@ function unsubscribe(msg)
   end
 end
 
+function send_msg_to_subscribers(text)
+  local count = 0;
+  for id, _ in pairs(get_subscribers_ids()) do
+    send_msg("user#" .. id, text, ok_cb, false)
+    count = count + 1;
+  end
+  return count
+end
+
 function broadcast()
   local text = return_cmd_output(broadcast_text_cmd)
   write_broadcast_log(broadcast_try_log_sym .. "try to broadcast .. .")
@@ -82,11 +91,7 @@ function broadcast()
     return
   end
   text = broadcast_text_header .. text .. broadcast_text_footer
-  local count = 0;
-  for id, _ in pairs(get_subscribers_ids()) do
-    send_msg("user#" .. id, text, ok_cb, false)
-    count = count + 1;
-  end
+  local count = send_msg_to_subscribers(text)
   write_broadcast_log(broadcast_ok_log_sym .. "message sent to " .. count .. " subscribers.")
 end
 
@@ -96,25 +101,30 @@ function force_broadcast(msg)
   end
 end
 
+function notify(msg, text)
+  if (msg.from.id == our_id) then
+    local count = send_msg_to_subscribers(text)
+    reply(msg, "Sent message to " .. count .. " subscribers.")
+  end
+end
+
 
 -- commands
 
 function call_cmd(msg, cmd, param)
-  -- prvent code injection
-  if param then
-    param = string.gsub(param, "[^ ,.0-9A-Za-z가-힣]", "")
-  end
   -- if cmd is lua function, call it
   if _G[cmd] then
     if param then
+      param = string.gsub(param, "[^ ,.?!0-9A-Za-z]", "") -- prvent code injection
       _G[cmd](msg, param)
     else
       _G[cmd](msg)
     end
-    -- or call it as shell command.
+    -- if cmd is not lua function, call it as shell command.
   else
     local text
     if param then
+      param = string.gsub(param, "[^ ,0-9A-Za-z]", "") -- prvent code injection (shell)
       text = return_cmd_output(cmd .. " " .. param)
     else
       text = return_cmd_output(cmd)

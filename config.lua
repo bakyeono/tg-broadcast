@@ -7,6 +7,10 @@ use_sqlite3           = true
 sqlite3_database      = run_path .. "/subscribers.db"
 
 -- mysql options
+-- To use MySQL, you need to create database.
+-- Login to your MySQL server (as root) and send below queries.
+-- CREATE DATABASE tg_broadcast;
+-- GRANT ALL ON tg_broadcast.* TO 'you'@'localhost';
 use_mysql             = false
 mysql_user            = "your_id"
 mysql_password        = "your password"
@@ -54,6 +58,7 @@ hidden_help_msg = [[
 -------------------------
 (admin only)
 broadcast   : Force broadcast now
+notify      : send a message to subscribers
 safequit    : Turn off robot
 ]]
 
@@ -70,6 +75,7 @@ cmds = {
   ["ip"]          = cmd_path .. "/ip.sh"
 }
 cmds_with_param = {
+  ["notify"]      = "notify",
   ["weather"]     = cmd_path .. "/query-openweathermap.org.sh"
 }
 
