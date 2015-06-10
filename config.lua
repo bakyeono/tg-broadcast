@@ -58,7 +58,7 @@ hidden_help_msg = [[
 -------------------------
 (admin only)
 broadcast   : Force broadcast now
-notify      : send a message to subscribers
+notify      : Send a message to subscribers
 safequit    : Turn off robot
 ]]
 
