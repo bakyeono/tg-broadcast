@@ -78,7 +78,6 @@ cmds = {
 cmds_with_param = {
   ["weather"]     = cmd_path .. "/query-openweathermap.org.sh"
 }
-
 cmds_for_admin = {
   ["broadcast"]   = "force_broadcast",
   ["safequit"]    = "safequit",
@@ -88,8 +87,6 @@ cmds_for_admin = {
   ["memfree"]     = cmd_path .. "/memfree.sh",
   ["diskfree"]    = cmd_path .. "/diskfree.sh"
 }
-
 cmds_with_param_for_admin = {
   ["notify"]      = "notify"
 }
-
