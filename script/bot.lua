@@ -167,21 +167,27 @@ function ok_cb(extra, success, result)
 end
 
 function parse_cmd(msg)
-  local cmd = (string.match(msg.text, "^([0-9A-Za-z가-힣_-]+)$"))
+  local cmd = (string.match(msg.text, "^([0-9A-Za-z_-]+)$"))
   if cmd then
-    return cmds[string.lower(cmd)]
-  else
-    return nil
+    if (msg.from.id == our_id) then
+      cmd = (cmds_for_admin[string.lower(cmd)] or cmds[string.lower(cmd)])
+    else
+      cmd = cmds[string.lower(cmd)]
+    end
   end
+  return cmd
 end
 
 function parse_cmd_with_param(msg)
-  local cmd = (string.match(msg.text, "^([0-9A-Za-z가-힣_-]+)"))
+  local cmd = (string.match(msg.text, "^([0-9A-Za-z_-]+)"))
   if cmd then
-    return cmds_with_param[string.lower(cmd)]
-  else
-    return nil
+    if (msg.from.id == our_id) then
+      cmd = (cmds_with_param_for_admin[string.lower(cmd)] or cmds_with_param[string.lower(cmd)])
+    else
+      cmd = cmds_with_param[string.lower(cmd)]
+    end
   end
+  return cmd
 end
 
 function on_msg_receive(msg)

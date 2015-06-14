@@ -14,7 +14,7 @@ sqlite3_database      = run_path .. "/subscribers.db"
 use_mysql             = false
 mysql_user            = "your_id"
 mysql_password        = "your password"
-mysql_database        = "tg-broadcast"
+mysql_database        = "tg_broadcast"
 
 -- text file record options
 -- used when both 'use_sqlite3' and 'use_mysql' are false.
@@ -47,35 +47,49 @@ unsubscribe_log_sym   = "UNSUBSCRIBE | " -- someone left
 -- help message
 help_msg = [[
 help        : This help
-ip          : Server's IP address
 time        : Server's time
 calendar    : Calendar
 weather CITY: Weather for CITY
 subscribe   : Subscribe my news
 unsubscribe : Unsubscribe my news
 ]]
-hidden_help_msg = [[
+help_msg_for_admin = [[
 -------------------------
 (admin only)
-broadcast   : Force broadcast now
+broadcast   : Force broadcast
 notify      : Send a message to subscribers
-safequit    : Turn off robot
+safequit    : Turn off bot
+ip          : Show server ip address
+cpuinfo     : /proc/cpuinfo
+meminfo     : /proc/meminfo
+memfree     : free
+diskfree    : df
 ]]
 
 -- command list
 -- assign lua functions or shell program here
 cmds = {
   ["help"]        = "help",
-  ["safequit"]    = "safequit",
-  ["broadcast"]   = "force_broadcast",
   ["subscribe"]   = "subscribe",
   ["unsubscribe"] = "unsubscribe",
   ["calendar"]    = cmd_path .. "/calendar.sh",
   ["time"]        = cmd_path .. "/date.sh",
-  ["ip"]          = cmd_path .. "/ip.sh"
 }
 cmds_with_param = {
-  ["notify"]      = "notify",
   ["weather"]     = cmd_path .. "/query-openweathermap.org.sh"
+}
+
+cmds_for_admin = {
+  ["broadcast"]   = "force_broadcast",
+  ["safequit"]    = "safequit",
+  ["ip"]          = cmd_path .. "/ip.sh",
+  ["cpuinfo"]     = cmd_path .. "/cpuinfo.sh",
+  ["meminfo"]     = cmd_path .. "/meminfo.sh",
+  ["memfree"]     = cmd_path .. "/memfree.sh",
+  ["diskfree"]    = cmd_path .. "/diskfree.sh"
+}
+
+cmds_with_param_for_admin = {
+  ["notify"]      = "notify"
 }
 
