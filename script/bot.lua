@@ -108,6 +108,12 @@ function notify(msg, text)
   end
 end
 
+function notify_test(msg, text)
+  if (msg.from.id == our_id) then
+    reply(msg, text)
+  end
+end
+
 
 -- commands
 
@@ -115,7 +121,7 @@ function call_cmd(msg, cmd, param)
   -- if cmd is lua function, call it
   if _G[cmd] then
     if param then
-      param = string.gsub(param, "[^ ,.?!0-9A-Za-z]", "") -- prvent code injection
+      param = string.gsub(param, "[^ -_+|%$@,.:=&/?!0-9A-Za-z]", "") -- prvent code injection
       _G[cmd](msg, param)
     else
       _G[cmd](msg)

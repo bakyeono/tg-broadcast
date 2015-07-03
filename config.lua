@@ -61,6 +61,7 @@ help_msg_for_admin = [[
 (admin only)
 broadcast   : Force broadcast
 notify      : Send a message to subscribers
+notify_test : notify only to myself
 safequit    : Turn off bot
 ip          : Show server ip address
 cpuinfo     : /proc/cpuinfo
