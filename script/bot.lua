@@ -22,19 +22,19 @@ function reply(msg, text)
 
   -- case 0, 1, 2
   if (msg.from.id == our_id) then
-    send_msg(msg.to.type .. "#" .. msg.to.id, text, ok_cb, false)
+    send_msg(msg.to.type .. "#" .. msg.to.id, bot_msg_header .. text, ok_cb, false)
     return
   end
 
   -- case 3
   if (msg.to.type == 'user' and msg.to.id == our_id) then
-    send_msg(msg.from.type .. "#" .. msg.from.id, text, ok_cb, false)
+    send_msg(msg.from.type .. "#" .. msg.from.id, bot_msg_header .. text, ok_cb, false)
     return
   end
 
   -- case 5
   if (msg.to.type == 'chat') then
-    send_msg(msg.to.type .. "#" .. msg.to.id, text, ok_cb, false)
+    send_msg(msg.to.type .. "#" .. msg.to.id, bot_msg_header .. text, ok_cb, false)
     return
   end
 end
@@ -148,7 +148,7 @@ end
 function help(msg)
   local text = help_msg
   if (msg.from.id == our_id) then
-    text = text .. hidden_help_msg
+    text = text .. help_msg_for_admin
   end
   reply(msg, text)
 end

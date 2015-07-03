@@ -20,6 +20,9 @@ mysql_database        = "tg_broadcast"
 -- used when both 'use_sqlite3' and 'use_mysql' are false.
 subscribers_record    = run_path .. "/subscribers.record"
 
+-- robot message header
+bot_msg_header        = "(bot)" -- not applied to broadcast messages
+
 -- cron options
 cron_interval         = 1800.0 -- seconds
 broadcast_min_hour    = 9      -- broadcast allowed in 09:00 ~ 18:00
