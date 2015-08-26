@@ -3,8 +3,6 @@ bakyeono/tg-broadcast
 
 [See English README](https://github.com/bakyeono/tg-broadcast/blob/master/README.md)
 
-**tg-broadcast** is a Telegram broadcast & auto response script (a.k.a. robot) for [telegram-cli(unofficial)][telegram-cli].
-
 **tg-broadcast**는 [telegram-cli(비공식)][telegram-cli]에서 작동하는 텔레그램 방송 & 자동 반응 로봇 스크립트입니다.
 
 검색해 보시면 여러 가지 텔레그램 로봇 스크립트를 찾을 수 있으니 필요에 맞는 것을 잘 고르세요. 여러 사람에게 메시지를 방송하고 싶다면 이 스크립트를 추천합니다.
